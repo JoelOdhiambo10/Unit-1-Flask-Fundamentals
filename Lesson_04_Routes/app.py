@@ -40,6 +40,17 @@ def calculator(num1,operation,num2):
         return f"{num1} {operation} {num2} = {result} "
     else:
         return f'Unknown operation! {operation}'
+    
+@app.route('/temp/<measurement>/<int:tempGiven>')
+def tempconverter(measurement,tempGiven):
+    FtoC = (32-tempGiven)*5/9
+    CtoF = (tempGiven*5/9)+32
+    if measurement == 'F':
+        return f'{tempGiven}F = {FtoC}C'
+    elif measurement == 'C':
+        return f'{tempGiven}C = {CtoF}F'
+    else:
+        return "Invalid Measurement"
 
 if __name__ == "__main__":
     app.run(debug=True)
